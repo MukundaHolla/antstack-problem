@@ -1,0 +1,54 @@
+<mat-toolbar>AntStack</mat-toolbar>
+
+<mat-form-field class="pincode">
+    <input matInput (keyup)="onDeliveryPinCodeChange($event.target.value)" placeholder="Filter Pincode" />
+</mat-form-field>
+
+<mat-form-field class="order-date">
+    <input matInput [matDatepicker]="picker" (dateInput)="onDateChange($event.value)" placeholder="Filter OrderDate" uib-datepicker-popup is-open="isOpen" ng-keydown="$event.preventDefault(); isOpen = true;" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<div class="data-table">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="orderId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Order ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.orderId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="customerId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.customerId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="deliveryPincode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Pin Code</th>
+            <td mat-cell *matCellDef="let element">{{ element.deliveryPincode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="orderDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Order Date</th>
+            <td mat-cell *matCellDef="let element">{{ element.orderDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="items">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Items</th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngFor="let value of element.items"><br />{{ value }}</div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>
+<div class="import-file">
+    <input color="primary" type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".csv" />
+
+    <button type="button" class="btn btn-info" mat-raised-button color="primary" (click)="upload()">
+    Click to Import  <i class="material-icons">
+            cloud_download
+            </i>
+  </button>
+</div>

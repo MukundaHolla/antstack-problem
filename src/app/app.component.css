@@ -1,0 +1,42 @@
+table {
+    width: 750px;
+    height: 400px;
+    margin: auto;
+}
+
+.data-table {
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-left: 375px;
+    width: 750px;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+.import-file {
+    margin-left: 600px;
+}
+
+.table-paginator {
+    width: 750px;
+    margin: auto;
+}
+
+.pincode {
+    font-size: 14px;
+    width: 100px;
+    margin-left: 400px;
+}
+
+.order-date {
+    font-size: 14px;
+    width: 150px;
+    margin-left: 400px;
+}
+
+mat-toolbar {
+    background-color: #c2185b;
+}
