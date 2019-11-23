@@ -34,6 +34,7 @@ export class AppComponent {
     this.dataSource.sort = this.sort;
   }
 
+  // Filtering the table based on 2 conditions 1)deliveryPinCode 2)orderDate
   filterTable() {
     let data = this.globalData.filter(item => {
       if (
@@ -47,6 +48,7 @@ export class AppComponent {
     this.dataSource.sort = this.sort;
   }
 
+  // Convert date into required format which will be easy to search and call filterTable() for filtering
   onDateChange(selectedDate) {
     let date = new Date(selectedDate);
     let year = date.getFullYear();
@@ -57,15 +59,18 @@ export class AppComponent {
     this.filterTable();
   }
 
+  // Get deliveryPinCode as param and call filterTable() for filtering
   onDeliveryPinCodeChange(filterValue: string) {
     this.deliveryPincode = filterValue.trim().toLowerCase();
     this.filterTable();
   }
 
+  // Get the file form external resource
   incomingfile(event) {
     this.file = event.target.files[0];
   }
 
+  // upload the file to the table in the format given
   upload() {
     this.papa.parse(this.file, {
       complete: result => {
